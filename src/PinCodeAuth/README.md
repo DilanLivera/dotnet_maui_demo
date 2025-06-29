@@ -4,12 +4,14 @@ This template provides a complete PIN code authentication system for .NET MAUI a
 
 ## Features
 
-- **Modern UI**: Clean, responsive PIN entry interface with visual feedback
-- **Secure Architecture**: Domain-driven design with proper separation of concerns
-- **Error Handling**: Comprehensive error handling using the Result pattern
+- **Two-Step Authentication**: Create PIN, then confirm by re-entering
+- **Modern UI**: Clean, responsive PIN entry interface with 4-dot visual feedback
+- **Smart Navigation**: Automatic flow between entry steps and navigation to home page
+- **Error Handling**: Clear error messages for mismatched PINs or invalid input
 - **Cross-Platform**: Works on iOS, Android, macOS, and Windows
 - **MVVM Pattern**: Uses CommunityToolkit.Mvvm for clean data binding
-- **Validation**: Robust PIN validation with clear user feedback
+- **Dynamic UI**: Context-aware buttons (Clear/Back) based on current step
+- **Professional PIN Dots**: 4-dot display with proper empty/filled states (circle borders with blue fill)
 
 ## Architecture
 
@@ -33,31 +35,33 @@ This template provides a complete PIN code authentication system for .NET MAUI a
 
 ## Usage
 
-### Default PIN
+### Two-Step Authentication Flow
 
-The template comes with a default PIN: **1234**
+1. **Create PIN**: User enters a 4-digit PIN
+2. **Confirm PIN**: User re-enters the same PIN to confirm
+3. **Success**: If PINs match, user is redirected to the home page
+4. **Error Handling**: If PINs don't match, clear error message is displayed and the process resets
 
-### Integration
+### Navigation
 
-1. The PIN authentication page is automatically set as the main page
-2. Upon successful authentication, users see a success message
-3. Failed attempts show clear error messages
-4. The interface automatically clears after failed attempts
+- **PIN → Home**: Automatic redirect after successful PIN confirmation
+- **Home → PIN**: Sign out button returns to PIN authentication with fresh state
+- **Step Navigation**: Back button allows return to first step during confirmation
+- **Auto-Reset**: PIN page automatically resets when navigated to (clears previous state)
 
 ### Customization
 
-#### Change the PIN
-
-Update the `_correctPin` field in `AuthenticatePinHandler.cs`:
-
-```csharp
-private readonly string _correctPin = "your-new-pin";
-```
-
 #### Modify PIN Length
 
-Adjust validation in `PinCode.cs`:
+To change from 4-digit to a different length, update these locations:
 
+1. **ViewModel validation** in `PinCodeViewModel.cs`:
+```csharp
+if (EnteredPin.Length < 6) // Change from 4 to desired length
+pin.Length == 6 && // Update validation
+```
+
+2. **Value object validation** in `PinCode.cs`:
 ```csharp
 Debug.Assert(value.Length >= 4 && value.Length <= 8, "PinCode must be between 4 and 8 digits");
 ```
@@ -70,16 +74,16 @@ Debug.Assert(value.Length >= 4 && value.Length <= 8, "PinCode must be between 4 
 
 #### Add Biometric Support
 
-Extend the `AuthenticatePinHandler` to include fingerprint/face recognition as an alternative authentication method.
+Extend the authentication flow in `PinCodeViewModel` to include fingerprint/face recognition as an alternative authentication method before PIN entry.
 
 ## Components
 
 ### Core Files
 
 - `PinCode.cs` - Value object with validation
-- `AuthenticatePinHandler.cs` - Authentication business logic
-- `PinCodeViewModel.cs` - UI state management
-- `PinCodeView.xaml` - User interface
+- `PinCodeViewModel.cs` - Two-step authentication logic and UI state management
+- `PinCodeView.xaml` - Dynamic user interface with step-aware controls
+- `HomePage.xaml` - Success page after authentication
 - `Result.cs` - Error handling pattern
 
 ### Supporting Files

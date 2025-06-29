@@ -5,12 +5,18 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pinCode="clr-namespace:PinCodeAuth.Features.PinCodeAuthentication.Presentation"
+    xmlns:local="clr-namespace:PinCodeAuth"
     FlyoutBehavior="Disabled"
     Title="PinCodeAuth">
 
     <ShellContent
         Title="PIN Authentication"
         ContentTemplate="{DataTemplate pinCode:PinCodeView}"
-        Route="PinCodePage" />
+        Route="pincode" />
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:HomePage}"
+        Route="home" />
 
 </Shell>

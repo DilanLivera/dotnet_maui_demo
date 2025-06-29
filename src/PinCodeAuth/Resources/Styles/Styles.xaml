@@ -253,7 +253,9 @@
     </Style>
 
     <!-- Delete Button Style with better symbol rendering -->
-    <Style x:Key="DeleteButtonStyle" TargetType="Button" BasedOn="{StaticResource ActionButtonStyle}">
+    <Style x:Key="DeleteButtonStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource ActionButtonStyle}">
         <Setter Property="FontSize" Value="18" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="Padding" Value="0" />

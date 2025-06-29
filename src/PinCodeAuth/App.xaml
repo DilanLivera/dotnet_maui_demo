@@ -11,7 +11,7 @@
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <!-- Value Converters -->
+                                    <!-- Value Converters -->
             <toolkit:IsStringNotNullOrWhiteSpaceConverter x:Key="StringToBoolConverter" />
         </ResourceDictionary>
     </Application.Resources>

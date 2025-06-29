@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using PinCodeAuth.Features.PinCodeAuthentication.Application;
 using PinCodeAuth.Features.PinCodeAuthentication.Presentation;
 using CommunityToolkit.Maui;
 
@@ -19,9 +18,9 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
-        builder.Services.AddSingleton<AuthenticatePinHandler>();
         builder.Services.AddTransient<PinCodeViewModel>();
         builder.Services.AddTransient<PinCodeView>();
+        builder.Services.AddTransient<HomePage>();
 
 #if DEBUG
         builder.Logging.AddDebug();

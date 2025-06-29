@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PinCodeAuth.HomePage"
+             Title="Home"
+             BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#1A1A1A}">
+
+    <Grid Padding="20">
+        <StackLayout VerticalOptions="Center" Spacing="30">
+
+            <!-- Welcome Section -->
+            <StackLayout Spacing="15">
+                <Label Text="🎉"
+                       FontSize="60"
+                       HorizontalOptions="Center" />
+
+                <Label Text="Welcome!"
+                       FontSize="32"
+                       FontAttributes="Bold"
+                       TextColor="{AppThemeBinding Light=#2C3E50, Dark=#ECF0F1}"
+                       HorizontalOptions="Center" />
+
+                <Label Text="PIN authentication successful"
+                       FontSize="16"
+                       TextColor="{AppThemeBinding Light=#7F8C8D, Dark=#BDC3C7}"
+                       HorizontalOptions="Center" />
+            </StackLayout>
+
+            <!-- Action Buttons -->
+            <StackLayout Spacing="15">
+                <Button Text="Go to Main App"
+                        BackgroundColor="{AppThemeBinding Light=#3498DB, Dark=#5DADE2}"
+                        TextColor="White"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        HeightRequest="50"
+                        CornerRadius="25"
+                        Clicked="OnMainAppClicked" />
+
+                <Button Text="Sign Out"
+                        BackgroundColor="Transparent"
+                        TextColor="{AppThemeBinding Light=#E74C3C, Dark=#EC7063}"
+                        FontSize="14"
+                        HeightRequest="40"
+                        BorderColor="{AppThemeBinding Light=#E74C3C, Dark=#EC7063}"
+                        BorderWidth="1"
+                        CornerRadius="20"
+                        Clicked="OnSignOutClicked" />
+            </StackLayout>
+
+        </StackLayout>
+    </Grid>
+</ContentPage>
